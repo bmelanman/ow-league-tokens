@@ -43,4 +43,4 @@ pip3 install -r $SCRIPT_DIR/requirements.txt
 deactivate
 
 # Prompt
-echo "Done!"
+echo "Setup Complete!"
