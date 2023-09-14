@@ -9,3 +9,6 @@ venv/
 src/config.json
 src/profiles/
 src/debug/
+
+config/
+logs/

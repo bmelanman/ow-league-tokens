@@ -1,9 +1,25 @@
-version: "3.9"
 services:
-  ow-league-tokens:
-    environment: ['DISPLAY=:99']
-    volumes: ['./src/profiles:/app/src/profiles']
-    build: .
-    # entrypoint: ['sleep', '10000']  # just for testing
-    entrypoint: ['/bin/sh', '-c', './docker-entrypoint.sh']
+
+  # region Chromium OW Token Bot
+  ow-token-bot:
+    container_name: ow-token-bot
+    image: lscr.io/linuxserver/chromium:latest
     restart: unless-stopped
+    shm_size: "1gb"
+    ports:
+      - 3000:3000
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=America/Los_Angeles
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./config/chromium:/config
+      - ./src:/app
+      - ./scripts:/scripts
+    # security_opt:
+    #   - seccomp:unconfined
+    cap_add:
+      - NET_ADMIN
+  # endregion
