@@ -2,13 +2,15 @@
 Project Description
 
 ### Column Name
-- [ ] Limiting Bandwidth with TrafficControl 
-  - [ ] Use `tc` to limit streaming quality
+- [ ] Limiting Bandwidth with TrafficToll
+  - [ ] Call `tt` in script only when streaming?
+  - [ ] Investigate error related to limiting specific processes
 - [ ] Attempt Attach
-  - [ ] Check if the bot can attach to an existing Chromium instance before creating its own.
+  - [ ] Check if the bot can attach to an existing Chromium instance before creating its own
 - [ ] Improve Script Quality
   - [ ] Add better logging (log4sh)
   - [ ] Update formatting
   - [ ] Remove any debug lines
 
-<!-- ### Completed Column ✓ -->
+### Completed Column ✓
+- [X] Setup TrafficToll to limit bandwidth speed globally
