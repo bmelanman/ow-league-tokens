@@ -1,9 +1,9 @@
 from pathlib import Path
-
+from platformdirs import user_config_dir
 from colorama import Fore
 
 
-CURRENT_VERSION = "2.0.6-beta1"
+CURRENT_VERSION = "2.0.6"
 UPDATE_DOWNLOAD_URL = "https://github.com/ucarno/ow-league-tokens/releases/latest"
 DISCORD_URL = "https://discord.gg/kkq2XY4cJM"
 ISSUES_URL = "https://github.com/ucarno/ow-league-tokens/issues"
@@ -12,7 +12,7 @@ FAKE_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 
 DEBUG_ENVIRON = "OW_LEAGUE_TOKENS_DEBUG"
 NOWAIT_ENVIRON = "OW_LEAGUE_TOKENS_NOWAIT"
 
-PATH_ROOT = Path(__file__).parent
+PATH_ROOT = Path(user_config_dir()).joinpath("ow-token-bot")
 PATH_PROFILES = PATH_ROOT.joinpath("profiles")
 PATH_DEBUG = PATH_ROOT.joinpath("debug")
 PATH_CONFIG = PATH_ROOT.joinpath("config.json")

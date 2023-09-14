@@ -27,11 +27,11 @@ apk update && apk add ${PACKAGES[@]}
 echo "Creating a new python3 virtual environment..."
 
 # Create virtual environment
-python3 -m venv $APP_DIR/venv
+python3 -m venv /config/venv
 # Start virtual environment
-source $APP_DIR/venv/bin/activate
-# Update /config permissions
-chmod -R 777 /config
+source /config/venv/bin/activate
+# Update /config
+mkdir -p /config/.cache/pip && chmod -R 777 /config
 
 # Prompt
 echo "Installing required modules..."
