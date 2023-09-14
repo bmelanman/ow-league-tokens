@@ -11,6 +11,7 @@ Project Description
   - [ ] Add better logging (log4sh)
   - [ ] Update formatting
   - [ ] Remove any debug lines
+- [ ] Is there a chrome auto-login API of any sort? 
 
 ### Completed Column ✓
 - [X] Setup TrafficToll to limit bandwidth speed globally

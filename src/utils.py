@@ -10,9 +10,11 @@ from pathlib import Path
 from time import sleep
 import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
+import traffictoll as tt
 
 import requests
 
+# TODO: Organize imports
 from constants import (
     COLORS,
     TMPL_LIVE_STREAM_URL,
@@ -32,6 +34,7 @@ from constants import (
     YOUTUBE_AUTH_PASS,
     YOUTUBE_AUTH_PASS_RE,
     YOUTUBE_LOGIN_URL,
+    PATH_TT_CONFIG,
 )
 
 from selenium.common.exceptions import WebDriverException
@@ -53,6 +56,26 @@ driver_info = lambda _driver, msg: log_info(
 driver_debug = lambda _driver, msg: log_debug(
     f"Chrome - '{get_driver_profile(_driver)}'", msg
 )
+
+
+# TODO: Doc string
+def start_tt() -> subprocess.Popen:
+    """_summary_
+
+    Returns:
+        subprocess.Popen: _description_
+    """
+    tt_main = f"{tt.__path__[0]}/__main__.py"
+    tt_config = PATH_TT_CONFIG.absolute()
+    interface = ""  # TODO: Add get_interface()
+
+    tt_proc = subprocess.Popen(
+        ["python3", tt_main, interface, tt_config],
+        stdout=sys.stdout,
+        stderr=sys.stderr,
+    )
+
+    return tt_proc
 
 
 def get_driver_profile(driver: uc.Chrome) -> str:
