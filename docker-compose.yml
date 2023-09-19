@@ -5,6 +5,7 @@ services:
     container_name: ow-token-bot
     image: lscr.io/linuxserver/chromium:latest
     restart: unless-stopped
+    command: exec /scripts/docker-entrypoint.sh
     shm_size: "1gb"
     ports:
       - 3000:3000
@@ -15,11 +16,11 @@ services:
       - TZ=America/Los_Angeles
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./config/chromium:/config
+      - ./config:/config
       - ./src:/app
       - ./scripts:/scripts
-    # security_opt:
-    #   - seccomp:unconfined
+    security_opt:
+      - seccomp:unconfined
     cap_add:
       - NET_ADMIN
   # endregion

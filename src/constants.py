@@ -12,12 +12,15 @@ FAKE_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 
 DEBUG_ENVIRON = "OW_LEAGUE_TOKENS_DEBUG"
 NOWAIT_ENVIRON = "OW_LEAGUE_TOKENS_NOWAIT"
 
-PATH_ROOT = Path(user_config_dir()).joinpath("ow-token-bot")
+PATH_CONFIG_ROOT = Path("/config/.config/")
+
+PATH_ROOT = PATH_CONFIG_ROOT.joinpath("ow-token-bot")
 PATH_PROFILES = PATH_ROOT.joinpath("profiles")
 PATH_DEBUG = PATH_ROOT.joinpath("debug")
 PATH_CONFIG = PATH_ROOT.joinpath("config.json")
 PATH_STATS = PATH_ROOT.joinpath("stats.json")
-PATH_TT_CONFIG = PATH_ROOT.joinpath("traffictoll-config.yaml")
+
+PATH_TT_CONFIG = PATH_CONFIG_ROOT.joinpath("traffictoll-config.yaml")
 
 TEST_CHANNEL_ID = "UCaG0IHN1RMOZ4-U3wDXAkwA"
 OWL_CHANNEL_ID = "UCiAInBL9kUzz1XRxk66v-gw"
@@ -56,9 +59,14 @@ DEFAULT_CHROMIUM_FLAGS = [
 DOCKER_CHROMIUM_FLAGS = [
     "--disable-application-cache",
     "--disable-gpu",
+    "--no-sandbox",
     "--disable-setuid-sandbox",
     "--disable-dev-shm-usage",
 ]
+
+# options.add_argument("--user-data-dir='Google/Chrome/user/data'")
+# options.add_argument('--profile-directory=Default')
+# options.add_argument("--headless=new")
 
 COLORS = (
     ("&g", Fore.GREEN),

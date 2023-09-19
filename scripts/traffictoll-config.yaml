@@ -1,0 +1,5 @@
+# TrafficToll configuration file
+
+# Global bandwidth limit
+download: 1mbps
+upload: 500kbps

@@ -10,6 +10,7 @@ from pathlib import Path
 from time import sleep
 import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
+from pyroute2 import IPDB
 import traffictoll as tt
 
 import requests
@@ -32,8 +33,6 @@ from constants import (
     NEW_TAB_URL,
     YOUTUBE_AUTH_ANY_RE,
     YOUTUBE_AUTH_PASS,
-    YOUTUBE_AUTH_PASS_RE,
-    YOUTUBE_LOGIN_URL,
     PATH_TT_CONFIG,
 )
 
@@ -65,12 +64,13 @@ def start_tt() -> subprocess.Popen:
     Returns:
         subprocess.Popen: _description_
     """
-    tt_main = f"{tt.__path__[0]}/__main__.py"
+    log_info("TrafficToll", "Starting TrafficToll...")
+
     tt_config = PATH_TT_CONFIG.absolute()
-    interface = ""  # TODO: Add get_interface()
+    interface = os.environ.get("IFACE", "eth0")
 
     tt_proc = subprocess.Popen(
-        ["python3", tt_main, interface, tt_config],
+        ["tt", interface, tt_config],
         stdout=sys.stdout,
         stderr=sys.stderr,
     )

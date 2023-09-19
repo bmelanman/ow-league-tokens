@@ -62,6 +62,11 @@ if __name__ == "__main__":
         action="store_true",
     )
     parser.add_argument(
+        "--debug",
+        help="App will use an alternate streaming URL for debugging purposes",
+        action="store_true",
+    )
+    parser.add_argument(
         "--profiles",
         help="Specify profiles to use instead of taking them from `config.json` (works only with `--nomenu` argument)",
         nargs="+",
@@ -78,6 +83,8 @@ if __name__ == "__main__":
         if args.docker:
             config["chromium_flags"].extend(DOCKER_CHROMIUM_FLAGS)
             config["headless"] = False
+        if args.debug:
+            config["debug"] = True
         bootstrap(config, args.nowait)
     else:
         menu()
